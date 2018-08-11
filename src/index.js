@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import './_global.css';
+import './_global.scss';
 import Root from './Root';
 import registerServiceWorker from './registerServiceWorker';
 
