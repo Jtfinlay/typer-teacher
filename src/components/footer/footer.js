@@ -7,15 +7,15 @@ const footer = () => (
     <footer class='footer'>
         <div className='container'>
             <ul>
-                <li><Link to="https://github.com/Jtfinlay/typer-teacher">Github</Link></li>
-                <li><Link to="https://twitter.com/JtFinlay">Twitter</Link></li>
+                <li><a href="https://github.com/Jtfinlay/typer-teacher">Github</a></li>
+                <li><a href="https://twitter.com/JtFinlay">Twitter</a></li>
                 <li><Link to="/about">About</Link></li>
             </ul>
             <p>
-                Designed and built with ❤ by <Link to="https://twitter.com/JtFinlay">@JtFinlay</Link>.
+                Designed and built with ❤ by <a href="https://twitter.com/JtFinlay">@JtFinlay</a>.
             </p>
             <p>
-                Code licensed <Link to="https://github.com/Jtfinlay/typer-teacher/blob/master/LICENSE">MIT</Link>.
+                Code licensed <a href="https://github.com/Jtfinlay/typer-teacher/blob/master/LICENSE">MIT</a>.
             </p>
         </div>
     </footer>

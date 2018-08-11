@@ -7,31 +7,30 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-}
 
-.navbar > ul {
-    display: flex;
-    flex-direction: row;
-}
+    ul {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    li {
+        padding: 1rem;
 
-.navbar li {
-    padding: 1rem;
-}
+        a {
+            color: #9CB7F6;
+        }
 
-.navbar li > a {
-    color: #9CB7F6;
-}
-
-.navbar li:hover {
-    cursor: pointer;
-}
-
-.navbar li:hover > a {
-    color: #CAD9FC;
-}
-
-.navbar .active > a,
-.navbar .active:hover > a {
-    color: white;
-    font-weight: 500;
+        &:hover {
+            cursor: pointer;
+            a {
+                color: #CAD9FC;
+            }
+        }
+    }
+    
+    .active > a,
+    .active:hover > a {
+        color: white;
+        font-weight: 500;
+    }
 }
