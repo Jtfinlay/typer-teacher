@@ -6,6 +6,7 @@ cache:
     - node_modules
 script:
   yarn build
+  yarn test
 before_deploy:
   - cd build
 deploy:

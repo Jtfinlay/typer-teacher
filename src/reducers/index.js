@@ -1,4 +1,3 @@
-
 function emptyReducer(state = {}, action) {
     return state;
 }

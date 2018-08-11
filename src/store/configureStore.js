@@ -5,7 +5,7 @@ import rootReducer from '../reducers';
 let middlewares = [];
 
 if (process.env.NODE_ENV !== 'production') {
-    middlewares = [...middlewares, logger]
+    middlewares = [ ...middlewares, logger ]
 }
 
 const createStoreWithMiddlewares = applyMiddleware(

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './footer.scss';
 
 const footer = () => (
-    <footer class='footer'>
+    <footer className='footer'>
         <div className='container'>
             <ul>
                 <li><a href="https://github.com/Jtfinlay/typer-teacher">Github</a></li>
