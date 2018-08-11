@@ -6,7 +6,7 @@ import './header.css';
 const header = () => (
     <header className="navbar">
         <ul>
-            <li><Link to="/" className="active">Home</Link></li>
+            <li className="active"><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/train">Get Started</Link></li>
         </ul>

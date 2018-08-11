@@ -10,26 +10,32 @@
 
 a {
     text-decoration: none;
-    color: #9CB7F6;
-}
-
-a:hover {
-    color: #CAD9FC;
-}
-
-.active,
-.active:hover {
-    color: white;
-    font-weight: 500;
 }
 
 ul {
     display: flex;
     flex-direction: row;
+    margin: 0;
 }
 
 li {
     list-style: none;
-    padding: 0 .5rem;
-    line-height: 1.5rem;
+    padding: 1rem;
+}
+li > a {
+    color: #9CB7F6;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+li:hover > a {
+    color: #CAD9FC;
+}
+
+.active > a,
+.active:hover > a {
+    color: white;
+    font-weight: 500;
 }
