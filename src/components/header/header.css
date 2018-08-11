@@ -1,0 +1,35 @@
+.navbar {
+    background: #4A7BEB;
+    min-height: 4rem;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+a {
+    text-decoration: none;
+    color: #9CB7F6;
+}
+
+a:hover {
+    color: #CAD9FC;
+}
+
+.active,
+.active:hover {
+    color: white;
+    font-weight: 500;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+}
+
+li {
+    list-style: none;
+    padding: 0 .5rem;
+    line-height: 1.5rem;
+}
