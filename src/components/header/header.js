@@ -11,5 +11,5 @@ const header = () => (
             <li><Link to="/train">Get Started</Link></li>
         </ul>
     </header>
-)
+);
 export default header;

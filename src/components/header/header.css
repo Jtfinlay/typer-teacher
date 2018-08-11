@@ -1,5 +1,6 @@
 .navbar {
     background: #4A7BEB;
+    box-shadow: 0 -2px 3px #f1f1f1;
     min-height: 4rem;
     top: 0;
 
@@ -8,35 +9,29 @@
     flex-direction: row;
 }
 
-a {
-    text-decoration: none;
-}
-
-ul {
+.navbar > ul {
     display: flex;
     flex-direction: row;
-    margin: 0;
 }
 
-li {
-    list-style: none;
+.navbar li {
     padding: 1rem;
 }
 
-li > a {
+.navbar li > a {
     color: #9CB7F6;
 }
 
-li:hover {
+.navbar li:hover {
     cursor: pointer;
 }
 
-li:hover > a {
+.navbar li:hover > a {
     color: #CAD9FC;
 }
 
-.active > a,
-.active:hover > a {
+.navbar .active > a,
+.navbar .active:hover > a {
     color: white;
     font-weight: 500;
 }
