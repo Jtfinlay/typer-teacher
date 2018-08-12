@@ -4,7 +4,9 @@ import rootReducer from '../reducers';
 
 let middlewares = [];
 
-if (process.env.NODE_ENV !== 'production') {
+const isProd = process.env.NODE_ENV !== 'production';
+
+if (!isProd) {
     middlewares = [ ...middlewares, logger ]
 }
 
@@ -16,6 +18,6 @@ export default function configureStore(initialState) {
     return createStoreWithMiddlewares(
         rootReducer, 
         initialState,
-        window.devToolsExtension ? window.devToolsExtension() : f => f
+        (!isProd && window.devToolsExtension) ? window.devToolsExtension() : f => f
     );
 }
