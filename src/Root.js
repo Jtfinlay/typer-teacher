@@ -8,7 +8,7 @@ import Footer from './components/footer';
 const Root = () => (
     <div>
         <Header/>
-        <Route path="" exact={ true } component={ Main }/>
+        <Route path="/" exact={ true } component={ Main }/>
         <Footer/>
     </div>
 )

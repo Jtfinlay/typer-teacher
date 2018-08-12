@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
 import './main.scss';
+import Board from '../board';
 
 class Main extends Component {
     render() {
@@ -13,6 +14,7 @@ class Main extends Component {
                 <p className="Main-intro">
                     To get started, edit <code>src/Main.js</code> and save to reload.
                 </p>
+                <Board/>
             </div>
         );
     }
