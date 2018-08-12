@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { keyPressed } from '../../actions';
 
 const mapStateToProps = state => ({
-    words: state.lessons.basic.text.split(/(\s)/),
-    history: state.activeLesson.history
+    text: state.activeLesson.history
 });
 
 const mapDispatchToProps = dispatch => ({

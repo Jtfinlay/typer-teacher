@@ -4,7 +4,7 @@ import rootReducer from '../reducers';
 
 let middlewares = [];
 
-const isProd = process.env.NODE_ENV !== 'production';
+const isProd = process.env.NODE_ENV === 'production';
 
 if (!isProd) {
     middlewares = [ ...middlewares, logger ]
