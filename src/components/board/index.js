@@ -1,14 +1,18 @@
 import Board from './board';
 import { connect } from 'react-redux';
+import { keyPressed } from '../../actions';
 
-const mapStateToProps = state => {
-    return {
-        words: state.lessons.basic.text.split(/(\s)/)
-    }
-}
+const mapStateToProps = state => ({
+    words: state.lessons.basic.text.split(/(\s)/)
+});
 
-const BoardConnected = connect(
-    mapStateToProps
+const mapDispatchToProps = dispatch => ({
+    keyPressed: key => dispatch(keyPressed(key))
+});
+
+const connector = connect(
+    mapStateToProps,
+    mapDispatchToProps
 )( Board );
 
-export default BoardConnected;
+export default connector;

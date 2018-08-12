@@ -6,7 +6,7 @@ import './board.scss';
 class Board extends Component {
 
     componentDidMount() {
-        document.addEventListener('keydown', this.handleKeyboardEvent);
+        document.addEventListener('keydown', this.handleKeyboardEvent.bind(this));
     }
 
     componentWillUnmount() {
@@ -15,7 +15,7 @@ class Board extends Component {
 
     renderWord(word, wordIndex) {
         if (/\s/.test(word)) {
-            return (<div key={ wordIndex } className="whitespace">{word}</div>);
+            return (<div key={ wordIndex } className="whitespace letter">{word}</div>);
         } else {
             return (
                 <div key={ wordIndex } className="word">
@@ -38,12 +38,13 @@ class Board extends Component {
     }
 
     handleKeyboardEvent(event) {
-        console.log(event);
+        this.props.keyPressed(event.key);
     }
 }
 
 Board.propTypes = {
-    words: PropTypes.arrayOf(PropTypes.string)
+    words: PropTypes.arrayOf(PropTypes.string).isRequired,
+    keyPressed: PropTypes.func.isRequired
 };
 
 export default Board;
