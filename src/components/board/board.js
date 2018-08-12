@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './board.scss';
 
@@ -11,28 +12,27 @@ class Board extends Component {
     componentWillUnmount() {
         document.removeEventListener('keydown', this.handleKeyboardEvent);
     }
+
+    renderWord(word, wordIndex) {
+        if (/\s/.test(word)) {
+            return (<div key={ wordIndex } className="whitespace">{word}</div>);
+        } else {
+            return (
+                <div key={ wordIndex } className="word">
+                    {[ ...word ].map((letter, i) => (
+                        <div key={ wordIndex+'-'+i } className="letter">{letter}</div> // eslint-disable-line react/no-array-index-key
+                    ))}
+                </div>
+            );
+        }
+    }
     
     render() {
         return (
             <div className="board">
-                <div className="word">
-                    <div className="letter is-right">p</div>
-                    <div className="letter is-right">o</div>
-                    <div className="letter is-right">p</div>
-                    <div className="letter is-wrong">u</div>
-                    <div className="letter is-right">l</div>
-                    <div className="letter is-fixed">o</div>
-                    <div className="letter is-right">u</div>
-                    <div className="letter is-active">s</div>
-                    <div className="letter">&nbsp;</div>
-                    <div className="letter">s</div>
-                    <div className="letter">c</div>
-                    <div className="letter">u</div>
-                    <div className="letter">d</div>
-                    <div className="letter">d</div>
-                    <div className="letter">e</div>
-                    <div className="letter">d</div>
-                </div>
+                {this.props.words.map((word, index) => {
+                    return this.renderWord(word, index);
+                })}
             </div>
         );
     }
@@ -41,5 +41,9 @@ class Board extends Component {
         console.log(event);
     }
 }
+
+Board.propTypes = {
+    words: PropTypes.arrayOf(PropTypes.string)
+};
 
 export default Board;

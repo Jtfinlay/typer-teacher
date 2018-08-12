@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import configureStore from './store/configureStore';
 
-const store = configureStore({});
+const store = configureStore();
 
 ReactDOM.render((
     <Provider store={ store }>
