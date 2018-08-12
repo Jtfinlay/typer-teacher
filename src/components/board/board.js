@@ -44,6 +44,7 @@ class Board extends Component {
 
 Board.propTypes = {
     words: PropTypes.arrayOf(PropTypes.string).isRequired,
+    history: PropTypes.arrayOf(PropTypes.string).isRequired,
     keyPressed: PropTypes.func.isRequired
 };
 
