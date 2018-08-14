@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { keyPressed } from '../../actions';
 
 const mapStateToProps = state => ({
-    text: state.activeLesson.history
+    lesson: state.lessons[ state.activeLesson ]
 });
 
 const mapDispatchToProps = dispatch => ({

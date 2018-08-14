@@ -14,30 +14,29 @@ class Board extends Component {
         document.removeEventListener('keydown', this.handleKeyboardEvent);
     }
 
-    // renderWord(word, wordIndex) {
-    //     if (/\s/.test(word)) {
-    //         return (<div key={ wordIndex } className="whitespace letter">{word}</div>);
-    //     } else {
-    //         return (
-    //             <div key={ wordIndex } className="word">
-    //                 {[ ...word ].map((letter, i) => (
-    //                     <div key={ wordIndex+'-'+i } className="letter">{letter}</div> // eslint-disable-line react/no-array-index-key
-    //                 ))}
-    //             </div>
-    //         );
-    //     }
-    // }
+    renderWord(letter) {
+        var isWhitespace = letter === ' ';
+        var { id, status, value } = letter;
+        return (
+            <div key={ id } className={ classNames({
+                letter: true,
+                whitespace: isWhitespace,
+                'is-right': status === 'right',
+                'is-wrong': status === 'wrong'
+            }) }>
+                { value }
+            </div>
+        )
+    }
     
     render() {
         return (
             <div className="board">
-                {this.props.text.map((item, index) => (
-                    <div key={ index } className={ classNames({ // eslint-disable-line react/no-array-index-key
-                        word: true,
-                        'is-right': item.status === 'right',
-                        'is-wrong': item.status === 'wrong'
-                    }) }>
-                        {item.letter}
+                {[ ...this.props.lesson.words ].map(word => (
+                    <div key={ word.id } className="word">
+                        {[ ...word.letters ].map(lid => 
+                            this.renderWord(this.props.lesson.letters.find(l => l.id === lid))
+                        )}
                     </div>
                 ))}
             </div>
@@ -50,10 +49,17 @@ class Board extends Component {
 }
 
 Board.propTypes = {
-    text: PropTypes.arrayOf(PropTypes.shape({
-        letter: PropTypes.string.isRequired,
-        status: PropTypes.string
-    }).isRequired).isRequired,
+    lesson: PropTypes.shape({
+        words: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            letters: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+        }).isRequired).isRequired,
+        letters: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            value: PropTypes.string.isRequired,
+            status: PropTypes.string
+        }).isRequired).isRequired
+    }).isRequired,
     keyPressed: PropTypes.func.isRequired
 };
 
