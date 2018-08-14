@@ -3,14 +3,15 @@ import { updateObjectInArray } from './index';
 import initialState from './initialState';
 
 const wordReducer = (state, word) => {
-    const letterIndex = word.letters.findIndex(l => state.letters[ l ].status === undefined);
+    const letterIndex = word.letters.findIndex(lid => 
+        state.letters.find(l => l.id === lid).status === undefined);
 
     return updateObjectInArray(
         state.words,
         state.words.indexOf(word),
         { 
-            ...currentWord,
-            status: (letterIndex >= currentWord.letters.length - 1) ? 'complete' : undefined
+            ...word,
+            status: (letterIndex >= (word.letters.length - 1)) ? 'complete' : undefined
         });
 }
 
@@ -33,8 +34,9 @@ const lessonReducer = (state, action) => {
     switch (action.type) {
         case KEY_PRESSED: {
             const currentWord = state.words.find(w => w.status === undefined);
-            const letterIndex = currentWord.letters.findIndex(l => state.letters[ l ].status === undefined);
-            const currentLetter = state.letters[ letterIndex ];
+            const letterIndex = currentWord.letters.findIndex(lid => 
+                state.letters.find(l => l.id === lid).status === undefined);
+            const currentLetter = state.letters.find(l => l.id === currentWord.letters[ letterIndex ]);
         
             return {
                 words: wordReducer(state, currentWord),

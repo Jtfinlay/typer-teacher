@@ -20,12 +20,15 @@ const activeLessonReducer = (state, action) => {
     return state.activeLesson;
 }
 
-const mainReducer = (state = {}, action) => {
-    const activeLesson = activeLessonReducer(state, action);
+const mainReducer = (state = { lessons: [] }, action) => {
+    const activeLessonName = activeLessonReducer(state, action);
     return {
         ...state,
-        activeLesson: activeLesson,
-        [ activeLesson ]: lessons(state[ activeLesson ], action)
+        activeLesson: activeLessonName,
+        lessons: { 
+            ...state.lessons,
+            [ activeLessonName ]: lessons(state.lessons[ activeLessonName ], action)
+        }
     }
 }
 
