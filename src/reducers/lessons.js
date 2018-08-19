@@ -2,9 +2,22 @@ import { KEY_PRESSED } from '../constants/actionTypes';
 import { updateObjectInArray } from './index';
 import initialState from './initialState';
 
+const letterById = (state, id) => state.letters.find(l => l.id === id);
+
+const findCurrentLetter = (state, word) => {
+    if (!word.letters) {
+        return null;
+    }
+
+    const letterId = word.letters.find(id => letterById(state, id).status === undefined)
+    if (letterId === undefined) {
+        return null;
+    }
+    return letterById(state, letterId);
+}
+
 const wordReducer = (state, word) => {
-    const letterIndex = word.letters.findIndex(lid => 
-        state.letters.find(l => l.id === lid).status === undefined);
+    const letterIndex = word.letters.findIndex(i => i === findCurrentLetter(state, word).id);
 
     return updateObjectInArray(
         state.words,
@@ -34,14 +47,15 @@ const lessonReducer = (state, action) => {
     switch (action.type) {
         case KEY_PRESSED: {
             const currentWord = state.words.find(w => w.status === undefined);
-            const letterIndex = currentWord.letters.findIndex(lid => 
-                state.letters.find(l => l.id === lid).status === undefined);
-            const currentLetter = state.letters.find(l => l.id === currentWord.letters[ letterIndex ]);
+            const currentLetter = findCurrentLetter(state, currentWord);;
         
-            return {
+            const result = {
                 words: wordReducer(state, currentWord),
                 letters: letterReducer(state, action, currentLetter)
             };
+
+            result.complete = !result.words.find(w => w.status === undefined);
+            return result;
         }
         default:
             return state;
